@@ -13,7 +13,7 @@ You can use this project to build and run a Trinity Core server.
 * curl 7.49.0+
 
 ### Installing:
-Create docker-compose.override.yml with the following
+Create docker-compose.override.yml with the following.  NOTE: This step needs permissions to create directories/files in your wow client directory that you map into the container for map extraction.
 
 ```
 version: '2'
