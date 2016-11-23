@@ -13,7 +13,7 @@ You can use this project to build and run a Trinity Core server.
 * curl 7.49.0+
 
 ### Installing:
-Create docker-compose-override.yml with the following
+Create docker-compose.override.yml with the following
 
 ```
 version: '2'
