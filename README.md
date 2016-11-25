@@ -3,6 +3,14 @@ This is a docker setup for running [Trinity Core 3.3.5a](https://github.com/Trin
 
 You can use this project to build and run a Trinity Core server.
 
+## Quick Start
+```
+cd /path/to/your/wow 3.3.5/client/
+git clone https://github.com/arisance/trinitycore-docker.git
+cd trinitycore-docker
+make install
+```
+
 ## Installation
 ### Prerequistes:
 * docker 1.12.0+
