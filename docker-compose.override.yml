@@ -2,4 +2,4 @@ version: '2'
 services:
   worldserver:
     volumes:
-      - <path to your wow 3.3.5 client>:/opt/trinitycore/data
+      - ..:/opt/trinitycore/data
