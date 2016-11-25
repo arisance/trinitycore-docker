@@ -25,7 +25,7 @@ create-database:
 	p7zip -d ${TDB}.7z
 	mv ${TDB}/TDB_full_world_*.sql ${INITDB_PATH}/04_world.sql
 	sed -i '1iUSE world;' ${INITDB_PATH}/04_world.sql
-        cp 05_admin_account.sql ${INITDB_PATH}
+	cp 05_admin_account.sql ${INITDB_PATH}
 	rm -rf ${TDB}
 
 
