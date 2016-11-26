@@ -1,3 +1,4 @@
+USE auth;
 SET
 @username = "trinity",
 @password = "trinity",
