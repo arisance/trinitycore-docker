@@ -2,7 +2,7 @@ FROM ubuntu:xenial
 
 # install requirements
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && apt-get install -y --no-install-recommends mysql-client git cmake make gcc g++ libmysqlclient-dev libssl-dev libbz2-dev libreadline-dev libncurses-dev libboost-dev libboost-thread-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-iostreams-dev p7zip
+RUN apt-get update && apt-get install -y --no-install-recommends mysql-client git cmake make gcc g++ libmysqlclient-dev libssl-dev libbz2-dev libreadline-dev libncurses-dev libboost-dev libboost-thread-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-iostreams-dev curl wget p7zip
 RUN mkdir -p /opt/trinitycore/build
 
 # create database
