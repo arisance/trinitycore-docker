@@ -40,5 +40,4 @@ services:
            - "3306"
         environment:
            - MYSQL_ALLOW_EMPTY_PASSWORD=1
-        depends_on: 
-           - trinitycore
+        depends_on: trinitycore
