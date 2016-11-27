@@ -2,14 +2,13 @@ FROM ubuntu:xenial
 
 # install requirements
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && apt-get install -y --no-install-recommends mysql-client git cmake make gcc g++ libmysqlclient-dev libssl-dev libbz2-dev libreadline-dev libncurses-dev libboost-dev libboost-thread-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-iostreams-dev ca-certificates curl wget p7zip
+RUN apt-get update && apt-get install -y --no-install-recommends mysql-client git cmake make gcc g++ libmysqlclient-dev libssl-dev libbz2-dev libreadline-dev libncurses-dev libboost-dev libboost-thread-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-iostreams-dev curl wget p7zip
 RUN mkdir -p /opt/trinitycore/build
 
 # create database
 ENV GIT=https://raw.githubusercontent.com/TrinityCore/TrinityCore/3.3.5
 ENV TDB_RELEASE=TDB335.62
 ENV TDB=TDB_full_335.62_2016_10_17
-VOLUME /opt/trinitycore/db /opt/trinitycore/etc
 RUN curl ${GIT}/sql/create/create_mysql.sql | sed 's/localhost/%/g' > /opt/trinitycore/db/01_create.sql && \
     echo "USE auth;" > /opt/trinitycore/db/02_auth_database.sql && \
     curl ${GIT}/sql/base/auth_database.sql >> /opt/trinitycore/db/02_auth_database.sql && \
@@ -20,6 +19,7 @@ RUN curl ${GIT}/sql/create/create_mysql.sql | sed 's/localhost/%/g' > /opt/trini
     mv ${TDB}/TDB_full_world_*.sql /opt/trinitycore/db/04_world.sql && \
     sed -i '1iUSE world;' /opt/trinitycore/db/04_world.sql && \
     rm -rf ${TDB}
+ADD 05_admin_account.sql /opt/trinitycore/db
 
 # create config
 RUN curl ${GIT}/src/server/authserver/authserver.conf.dist | \
