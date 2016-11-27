@@ -51,6 +51,6 @@ RUN make -j$(nproc) install
 
 # configuration
 WORKDIR /opt/trinitycore
-RUN sed -e 's/DataDir = "."/DataDir = "..\/data"/g; s/LogsDir = ""/LogsDir = "..\/log"/g; s/\(Login\|World\|Character\|Hotfix\)DatabaseInfo\([ ]*\)= "[^;]*\(.*\)"/\1DatabaseInfo\2= "db\3"/g' etc/worldserver.conf.dist > /opt/trinitycore/etc/worldserver.conf
+RUN sed -e 's/DataDir = "."/DataDir = "..\/data"/g; s/LogsDir = ""/LogsDir = "..\/log"/g; s/\(Login\|World\|Character\|Hotfix\)DatabaseInfo\([ ]*\)= "[^;]*\(.*\)"/\1DatabaseInfo\2= "db\3"/g' etc/worldserver.conf.dist > etc/worldserver.conf
 
 ADD scripts /scripts
