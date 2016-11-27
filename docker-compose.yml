@@ -4,11 +4,9 @@ services:
         build: .
         volumes:
            - ./log:/opt/trinitycore/log
-           - ./mount/initdb:/opt/trinitycore/db
-           - ./etc:/opt/trinitycore/etc
         restart: always
         working_dir: /opt/trinitycore/bin
-        command: /bin/true
+        command: bash /scripts/infiniteLoop.sh
     authserver:
         extends: trinitycore
         links:
@@ -24,6 +22,7 @@ services:
         links:
            - db
         volumes:
+#          mount Wow installation to /opt/trinitycore/data in docker-compose.override.yml
            - ./etc/worldserver.conf:/opt/trinitycore/etc/worldserver.conf
         ports:
            - "8085:8085" 
@@ -40,4 +39,3 @@ services:
            - "3306"
         environment:
            - MYSQL_ALLOW_EMPTY_PASSWORD=1
-        depends_on: trinitycore

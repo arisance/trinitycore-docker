@@ -15,6 +15,7 @@ GIT=https://raw.githubusercontent.com/TrinityCore/TrinityCore/3.3.5
 INITDB_PATH=mount/initdb
 
 create-database:
+	mkdir -p ${INITDB_PATH}
 	curl ${GIT}/sql/create/create_mysql.sql | sed 's/localhost/%/g' > ${INITDB_PATH}/01_create.sql
 	echo "USE auth;" > ${INITDB_PATH}/02_auth_database.sql
 	curl ${GIT}/sql/base/auth_database.sql >> ${INITDB_PATH}/02_auth_database.sql
