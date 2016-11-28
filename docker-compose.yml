@@ -4,11 +4,11 @@ services:
         build: .
         volumes:
            - ./log:/opt/trinitycore/log
-        restart: always
         working_dir: /opt/trinitycore/bin
-        command: bash /scripts/infiniteLoop.sh
+        command: /bin/true
     authserver:
         extends: trinitycore
+        restart: always
         links:
            - db
         volumes:
@@ -19,6 +19,7 @@ services:
 
     worldserver:
         extends: trinitycore
+        restart: always
         links:
            - db
         volumes:
